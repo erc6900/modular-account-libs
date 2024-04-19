@@ -1,6 +1,34 @@
 [profile.default]
-src = "src"
-out = "out"
-libs = ["lib"]
+solc = '0.8.20'
+evm_version='paris'
+via_ir = true
+src = 'src'
+out = 'out'
+test = 'test'
+libs = ['lib']
+optimizer = true
+optimizer_runs = 900
+ignored_error_codes = []
+
+[fuzz]
+runs = 500
+
+[invariant]
+runs = 500
+fail_on_revert = true
+depth = 10
+
+[profile.lite]
+via_ir = false
+optimizer = true
+optimizer_runs = 10_000
+ignored_error_codes = []
+
+[profile.deep.fuzz]
+runs = 10000
+
+[profile.deep.invariant]
+runs = 5000
+depth = 32
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

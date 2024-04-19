@@ -1,6 +1,7 @@
-# Compiler files
+# Foundry build and cache directories
 cache/
 out/
+node_modules/
 
 # Ignores development broadcast logs
 !/broadcast
@@ -12,3 +13,7 @@ docs/
 
 # Dotenv file
 .env
+
+# coverage
+report/
+lcov.info

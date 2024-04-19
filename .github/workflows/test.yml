@@ -1,34 +1,102 @@
-name: test
+name: modular-account-libs Test CI
 
-on: workflow_dispatch
+on: [pull_request, workflow_dispatch]
 
-env:
-  FOUNDRY_PROFILE: ci
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
 
+# Runs linter, tests, and inspection checker in parallel
 jobs:
-  check:
-    strategy:
-      fail-fast: true
-
-    name: Foundry project
+  lint:
+    name: Run Linters
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: "Check out the repo"
+        uses: "actions/checkout@v3"
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: "Install Pnpm"
+        uses: "pnpm/action-setup@v2"
+        with:
+          version: "8"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v3"
+        with:
+          cache: "pnpm"
+          node-version: "lts/*"
+
+      - name: "Install Node.js dependencies"
+        run: "pnpm install"
+
+      - name: "Check formatting"
+        run: forge fmt --check
+
+      - name: "Lint the contracts"
+        run: "pnpm lint"
+
+  test:
+    name: Run Forge Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check out the repo"
+        uses: actions/checkout@v3
         with:
           submodules: recursive
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
+
+      - name: "Install Pnpm"
+        uses: "pnpm/action-setup@v2"
         with:
-          version: nightly
+          version: "8"
 
-      - name: Run Forge build
-        run: |
-          forge --version
-          forge build --sizes
-        id: build
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v3"
+        with:
+          cache: "pnpm"
+          node-version: "lts/*"
 
-      - name: Run Forge tests
-        run: |
-          forge test -vvv
-        id: test
+      - name: "Install Node.js dependencies"
+        run: "pnpm install"
+
+      - name: Build project
+        run: forge build --sizes
+
+      - name: Run tests
+        run: FOUNDRY_PROFILE=deep forge test -vvv
+
+  test-lite:
+    name: Run Forge Tests [lite build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check out the repo"
+        uses: actions/checkout@v3
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: "Install Pnpm"
+        uses: "pnpm/action-setup@v2"
+        with:
+          version: "8"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v3"
+        with:
+          cache: "pnpm"
+          node-version: "lts/*"
+
+      - name: "Install Node.js dependencies"
+        run: "pnpm install"
+
+
+      - name: Build project
+        run: FOUNDRY_PROFILE=lite forge build
+
+      - name: Run tests
+        run: FOUNDRY_PROFILE=lite forge test -vvv

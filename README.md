@@ -1,66 +1,28 @@
-## Foundry
+## Modular Account Libs
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A set of libraries for building modular smart contract accounts.
 
-Foundry consists of:
+## Overview
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+TODO
 
-## Documentation
+### Installation
 
-https://book.getfoundry.sh/
+TODO
 
-## Usage
+### Building and Testing
 
-### Build
+```bash
+# Build options
+forge build
+FOUNDRY_PROFILE=lite forge build
+FOUNDRY_PROFILE=optimized-build forge build --sizes
 
-```shell
-$ forge build
+# Lint
+pnpm lint
+
+# Test Options
+forge test -vvv
+FOUNDRY_PROFILE=lite forge test -vvv
 ```
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
