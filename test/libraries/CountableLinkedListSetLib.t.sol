@@ -16,7 +16,7 @@ contract CountableLinkedListSetLibTest is Test {
 
     LinkedListSet internal _set;
 
-    uint16 internal constant _MAX_COUNTER_VALUE = 255;
+    uint16 internal constant MAX_COUNTER_VALUE = 255;
 
     // User-defined function for wrapping from bytes30 (uint240) to SetValue
     // Can define a custom one for addresses, uints, etc.
@@ -36,7 +36,7 @@ contract CountableLinkedListSetLibTest is Test {
         SetValue value = _getListValue(12);
         assertEq(_set.getCount(value), 0);
 
-        for (uint256 i = 0; i < _MAX_COUNTER_VALUE + 1; ++i) {
+        for (uint256 i = 0; i < MAX_COUNTER_VALUE + 1; ++i) {
             assertTrue(_set.tryIncrement(value));
             assertEq(_set.getCount(value), i + 1);
         }
@@ -53,11 +53,11 @@ contract CountableLinkedListSetLibTest is Test {
         assertEq(_set.getCount(value), 0);
         assertFalse(_set.tryDecrement(value));
 
-        for (uint256 i = 0; i < _MAX_COUNTER_VALUE + 1; ++i) {
+        for (uint256 i = 0; i < MAX_COUNTER_VALUE + 1; ++i) {
             _set.tryIncrement(value);
         }
 
-        for (uint256 i = _MAX_COUNTER_VALUE + 1; i > 0; --i) {
+        for (uint256 i = MAX_COUNTER_VALUE + 1; i > 0; --i) {
             assertTrue(_set.tryDecrement(value));
             assertEq(_set.getCount(value), i - 1);
         }

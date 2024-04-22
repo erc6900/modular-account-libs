@@ -28,7 +28,7 @@ library AssociatedLinkedListSetLib {
     // sentinel.
 
     // This cannot be evaluated at compile time because of its use in inline assembly.
-    bytes4 internal constant _ASSOCIATED_STORAGE_PREFIX = 0xf938c976; // bytes4(keccak256("AssociatedLinkedListSet"))
+    bytes4 internal constant ASSOCIATED_STORAGE_PREFIX = 0xf938c976; // bytes4(keccak256("AssociatedLinkedListSet"))
 
     // A custom type representing the index of a storage slot
     type StoragePointer is bytes32;
@@ -486,7 +486,7 @@ library AssociatedLinkedListSetLib {
             // Store the associated address in the first word, left-padded with zeroes
             mstore(key, associated)
             // Store the prefix and a batch index of 0
-            mstore(add(key, 0x20), _ASSOCIATED_STORAGE_PREFIX)
+            mstore(add(key, 0x20), ASSOCIATED_STORAGE_PREFIX)
             // Store the list's storage slot in the third word
             mstore(add(key, 0x40), set.slot)
             // Leaves the last word open for the value entry

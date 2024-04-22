@@ -5,7 +5,7 @@
     "@openzeppelin/contracts": "^5.0.2",
     "forge-std": "github:foundry-rs/forge-std#v1.8.1",
     "pnpm": "^8.7.5",
-    "solhint": "^3.6.2"
+    "solhint": "^4.5.4"
   },
   "scripts": {
     "lint": "pnpm lint:src && pnpm lint:test",

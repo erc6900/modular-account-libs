@@ -39,7 +39,7 @@ contract LinkedListSetHandler is CommonBase, StdCheats, StdUtils {
     error LengthMismatch(uint256 expected, uint256 actual);
     error MetaDoesNotContain(bytes30 value);
 
-    bytes32 internal constant _SENTINEL_VALUE = bytes32(uint256(1));
+    bytes32 internal constant SENTINEL_VALUE = bytes32(uint256(1));
 
     constructor() {}
 
@@ -144,7 +144,7 @@ contract LinkedListSetHandler is CommonBase, StdCheats, StdUtils {
         for (uint256 i = 0; i < values.length; i++) {
             if (SetValue.unwrap(values[i]) == bytes30(value)) {
                 if (i == 0) {
-                    prev = _SENTINEL_VALUE;
+                    prev = SENTINEL_VALUE;
                 } else {
                     prev = bytes32(SetValue.unwrap(values[i - 1]));
                 }
@@ -190,7 +190,7 @@ contract LinkedListSetHandler is CommonBase, StdCheats, StdUtils {
         for (uint256 i = 0; i < values.length; i++) {
             if (SetValue.unwrap(values[i]) == bytes30(val)) {
                 if (i == 0) {
-                    realPrev = _SENTINEL_VALUE;
+                    realPrev = SENTINEL_VALUE;
                 } else {
                     realPrev = bytes32(SetValue.unwrap(values[i - 1]));
                 }

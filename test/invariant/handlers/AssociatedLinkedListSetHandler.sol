@@ -412,7 +412,7 @@ contract AssociatedLinkedListSetHandler is CommonBase, StdCheats, StdUtils {
         } else if (id == ID_2) {
             associatedSet = set2;
         } else {
-            // solhint-disable-next-line custom-errors
+            // solhint-disable-next-line gas-custom-errors
             revert("Invalid id");
         }
     }
