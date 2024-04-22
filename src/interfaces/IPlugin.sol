@@ -6,7 +6,7 @@
 
 pragma solidity ^0.8.20;
 
-import {UserOperation} from "account-abstraction/interfaces/UserOperation.sol";
+import {UserOperation} from "./UserOperation.sol";
 
 enum ManifestAssociatedFunctionType {
     // Function is not defined.
@@ -141,8 +141,7 @@ interface IPlugin {
     /// @param sender The caller address.
     /// @param value The call value.
     /// @param data The calldata sent.
-    function preRuntimeValidationHook(uint8 functionId, address sender, uint256 value, bytes calldata data)
-        external;
+    function preRuntimeValidationHook(uint8 functionId, address sender, uint256 value, bytes calldata data) external;
 
     /// @notice Run the runtime validationFunction specified by the `functionId`.
     /// @dev To indicate the entire call should revert, the function MUST revert.
@@ -151,8 +150,7 @@ interface IPlugin {
     /// @param sender The caller address.
     /// @param value The call value.
     /// @param data The calldata sent.
-    function runtimeValidationFunction(uint8 functionId, address sender, uint256 value, bytes calldata data)
-        external;
+    function runtimeValidationFunction(uint8 functionId, address sender, uint256 value, bytes calldata data) external;
 
     /// @notice Run the pre execution hook specified by the `functionId`.
     /// @dev To indicate the entire call should revert, the function MUST revert.

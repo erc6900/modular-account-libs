@@ -26,3 +26,6 @@ forge test -vvv
 FOUNDRY_PROFILE=lite forge test -vvv
 ```
 
+### Acknowledgements
+
+The files `IERC165` and `ERC165` are ported from @OpenZeppelin/contracts@v5.0.2, made available under the MIT license.

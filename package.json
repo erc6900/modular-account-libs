@@ -3,7 +3,6 @@
   "version": "0.7.0",
   "devDependencies": {
     "@openzeppelin/contracts": "^5.0.2",
-    "account-abstraction": "github:eth-infinitism/account-abstraction#v0.6.0",
     "forge-std": "github:foundry-rs/forge-std#v1.8.1",
     "pnpm": "^8.7.5",
     "solhint": "^3.6.2"
