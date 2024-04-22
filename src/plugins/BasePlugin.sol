@@ -13,10 +13,10 @@ import {IPlugin, PluginManifest, PluginMetadata} from "../interfaces/IPlugin.sol
 /// @dev Implements ERC-165 to support IPlugin's interface, which is a requirement
 /// for plugin installation. This also ensures that plugin interactions cannot
 /// happen via the standard execution funtions `execute`, `executeBatch`, and `executeFromPluginExternal`.
-/// Note that the plugins implementing BasePlugin cannot be installed when creating an account (aka installed in the
-/// account constructor) unless onInstall is overriden without checking codesize of caller (account). Checking
-/// codesize of account is to prevent EOA from accidentally calling plugin and initiate states which will make it
-/// unusable in the future when EOA can be upgraded into an smart contract account.
+/// Note that the plugins implementing BasePlugin cannot be installed within the account constructor. unless
+/// `onInstall` is overriden to not check the codesize of caller. The codesize check is done to prevent an EOA
+/// from accidentally calling the plugin and initiating state, which will make it unusable in the future when EOAs
+/// can be upgraded to smart contract accounts.
 abstract contract BasePlugin is ERC165, IPlugin {
     error AlreadyInitialized();
     error InvalidAction();
@@ -166,7 +166,9 @@ abstract contract BasePlugin is ERC165, IPlugin {
     /// @notice Describe the metadata of the plugin.
     /// @dev This metadata MUST stay constant over time.
     /// @return A metadata struct describing the plugin.
-    function pluginMetadata() external pure virtual returns (PluginMetadata memory);
+    function pluginMetadata() external pure virtual returns (PluginMetadata memory) {
+        revert NotImplemented(msg.sig, 0);
+    }
 
     /// @dev Returns true if this contract implements the interface defined by
     /// `interfaceId`. See the corresponding
