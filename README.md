@@ -89,6 +89,6 @@ FOUNDRY_PROFILE=lite forge test -vvv
 
 The libraries and stub contracts were originally developed in [alchemyplatform/modular-account](https://github.com/alchemyplatform/modular-account/tree/v1.0.1), and are contributed to the ERC-6900 community here. The original library versions, and audits covering the original library versions, can be found in the linked repository.
 
-The files `IERC165` and `ERC165` are ported from @OpenZeppelin/contracts@v5.0.2, made available under the MIT license.
+The files `IERC165` and `ERC165` are ported from [OpenZeppelin/openzeppelin-contracts@v5.0.2](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v5.0.2), made available under the MIT license.
 
 ERC-4337 and ERC-6900 interfaces are released into the public domain via CC0 1.0 Universal as part of the ERC submission process, and made available here.
