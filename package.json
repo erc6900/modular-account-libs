@@ -2,8 +2,8 @@
   "name": "@erc6900/modular-account-libs",
   "version": "0.8.0-rc.0",
   "devDependencies": {
-    "@openzeppelin/contracts": "^5.0.2",
     "@erc6900/reference-implementation": "github:erc6900/reference-implementation#v0.8.0-rc.1",
+    "@openzeppelin/contracts": "^5.0.2",
     "forge-std": "github:foundry-rs/forge-std#v1.8.1",
     "pnpm": "^8.7.5",
     "solhint": "^4.5.4"
