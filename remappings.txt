@@ -1,3 +1,4 @@
 @openzeppelin/contracts/=node_modules/@openzeppelin/contracts/
+@erc6900/reference-implementation/=node_modules/@erc6900/reference-implementation/src/
 forge-std/=node_modules/forge-std/src/
 account-abstraction/=node_modules/account-abstraction/contracts/
