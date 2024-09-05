@@ -468,7 +468,7 @@ library AssociatedLinkedListSetLib {
         // | entry value        | 0xVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV____ |
         // | entry meta         | 0x____________________________________________________________MMMM |
 
-        // The batch index is for consistency with PluginStorageLib, and the prefix in front of it is
+        // The batch index is for consistency with ModuleStorageLib, and the prefix in front of it is
         // to prevent any potential crafted collisions where the batch index may be equal to storage slot
         // of the ALLS. The prefix is set to the upper bits of the batch index to make it infeasible to
         // reach from just incrementing the value.

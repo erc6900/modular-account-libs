@@ -6,11 +6,11 @@ pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
 
-import {PluginStorageLib, StoragePointer} from "../../src/libraries/PluginStorageLib.sol";
+import {ModuleStorageLib, StoragePointer} from "../../src/libraries/ModuleStorageLib.sol";
 
-contract PluginStorageLibTest is Test {
-    using PluginStorageLib for bytes;
-    using PluginStorageLib for bytes32;
+contract ModuleStorageLibTest is Test {
+    using ModuleStorageLib for bytes;
+    using ModuleStorageLib for bytes32;
 
     uint256 public constant FUZZ_ARR_SIZE = 32;
 
@@ -26,9 +26,9 @@ contract PluginStorageLibTest is Test {
     }
 
     function test_storagePointer() public {
-        bytes memory key = PluginStorageLib.allocateAssociatedStorageKey(account1, 0, 1);
+        bytes memory key = ModuleStorageLib.allocateAssociatedStorageKey(account1, 0, 1);
 
-        StoragePointer ptr = PluginStorageLib.associatedStorageLookup(
+        StoragePointer ptr = ModuleStorageLib.associatedStorageLookup(
             key, hex"00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff"
         );
         TestStruct storage val = _castPtrToStruct(ptr);
@@ -60,8 +60,8 @@ contract PluginStorageLibTest is Test {
         bytes32 inputKey,
         uint256[FUZZ_ARR_SIZE] calldata values
     ) public {
-        bytes memory key = PluginStorageLib.allocateAssociatedStorageKey(account, batchIndex, 1);
-        uint256[FUZZ_ARR_SIZE] storage val = _castPtrToArray(PluginStorageLib.associatedStorageLookup(key, inputKey));
+        bytes memory key = ModuleStorageLib.allocateAssociatedStorageKey(account, batchIndex, 1);
+        uint256[FUZZ_ARR_SIZE] storage val = _castPtrToArray(ModuleStorageLib.associatedStorageLookup(key, inputKey));
         // Write values to storage
         vm.record();
         for (uint256 i = 0; i < FUZZ_ARR_SIZE; i++) {

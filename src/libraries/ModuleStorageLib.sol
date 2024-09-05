@@ -6,9 +6,9 @@ pragma solidity ^0.8.20;
 
 type StoragePointer is bytes32;
 
-/// @title Plugin Storage Library
-/// @notice Library for allocating and accessing ERC-4337 address-associated storage within plugins.
-library PluginStorageLib {
+/// @title Module Storage Library
+/// @notice Library for allocating and accessing ERC-4337 address-associated storage within modules.
+library ModuleStorageLib {
     /// @notice Allocates a memory buffer for an associated storage key, and sets the associated address and batch
     /// index.
     /// @param addr The address to associate with the storage key.

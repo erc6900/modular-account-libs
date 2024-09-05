@@ -1,6 +1,6 @@
 ## Modular Account Libs
 
-A set of libraries to help build modular smart contract accounts and plugins.
+A set of libraries to help build modular smart contract accounts and modules.
 
 ## Installation
 
@@ -11,6 +11,7 @@ forge install erc6900/modular-account-libs@v0.7.0
 ```
 
 Recommended remappings setup:
+
 ```plaintext
 modular-account-libs/=lib/modular-account-libs/src/
 ```
@@ -24,21 +25,12 @@ pnpm add github:erc6900/modular-account-libs#v0.7.0
 Any package manager with NPM support can handle this installation, including `npm`,`yarn`,`pnpm`, and `bun`.
 
 Recommended remappings setup:
+
 ```plaintext
 modular-account-libs/=node_modules/modular-account-libs/src/
 ```
 
 ## Overview
-
-### Plugin stub contracts
-
-#### BasePlugin
-
-The `BasePlugin` contract implements all necessary functions for a plugin with stub definitions, and acts as a starting point for writing ERC-6900 v0.7 compliant plugin contracts.
-
-All contracts derived from `BasePlugin` should override the functions `pluginManfiest` and `pluginMetadata`.
-
-Depending on the type of plugin being implemented, you may also override additional functions representing validation functions or hooks.
 
 ### Libraries
 
@@ -50,23 +42,19 @@ In addition to supporting these efficient operations, the library also supports 
 
 Additionally, entries also support “flags”. These can be thought of as additional values attached to entries, much like a sub-mapping for each element within the set. 14 bits are available for flag values, the lowest two bits are reserved for the sentinel implementation and a list traversal optimization.
 
-`AssociatedLinkedListSetLib` implements a linked list set almost identically to `LinkedListSetLib`, except its entries are held in account-associated storage. This library is intended to be used by plugins, which must hold values in account-associated storage if they wish to access or update them during ERC-4337 validation.
+`AssociatedLinkedListSetLib` implements a linked list set almost identically to `LinkedListSetLib`, except its entries are held in account-associated storage. This library is intended to be used by modules, which must hold values in account-associated storage if they wish to access or update them during ERC-4337 validation.
 
 `CountableLinkedListSetLib` extends `LinkedListSetLib` to allow adding a value more than once. It uses the upper byte (8 bits) of the 14 available flag bits for an entry to track this, and supports adding an entry up to 256 times. There does not yet exist a version of this library that is held in associated storage.
 
 The common types and constants used by these libraries are defined in `Constants.sol`.
 
-#### PluginStorageLib
+#### ModuleStorageLib
 
-`PluginStorageLib` is a low-level library that provides utilities for getting storage slots in address-associated storage using varying amounts of input data as a key.
+`ModuleStorageLib` is a low-level library that provides utilities for getting storage slots in address-associated storage using varying amounts of input data as a key.
 
-#### FunctionReferenceLib
+#### ModuleEntityLib
 
-`FunctionReferenceLib` provides helpful conversions and utility functions for using `FunctionReference`, a user-defined value type intended to hold a plugin address and a function id.
-
-### Interfaces
-
-Interfaces defined and depended on by ERC-6900 are available in the `src/interfaces` folder.
+`ModuleEntityLib` provides helpful conversions and utility functions for using `ModuleEntity`, a user-defined value type intended to hold a module address and an entity ID.
 
 ## Building and Testing
 
@@ -88,7 +76,5 @@ FOUNDRY_PROFILE=lite forge test -vvv
 ## Acknowledgements
 
 The libraries and stub contracts were originally developed in [alchemyplatform/modular-account](https://github.com/alchemyplatform/modular-account/tree/v1.0.1), and are contributed to the ERC-6900 community here. The original library versions, and audits covering the original library versions, can be found in the linked repository.
-
-The files `IERC165` and `ERC165` are ported from [OpenZeppelin/openzeppelin-contracts@v5.0.2](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v5.0.2), made available under the MIT license.
 
 ERC-4337 and ERC-6900 interfaces are released into the public domain via CC0 1.0 Universal as part of the ERC submission process, and made available here.
