@@ -32,14 +32,6 @@ modular-account-libs/=node_modules/modular-account-libs/src/
 
 ## Overview
 
-### Module stub contracts
-
-#### BaseModule
-
-The `BaseModule` contract implements all necessary functions for a module with stub definitions, and acts as a starting point for writing ERC-6900 v0.8 compliant module contracts.
-
-Depending on the type of module being implemented, you may also override additional functions representing manifests, validation functions, or hooks.
-
 ### Libraries
 
 #### LinkedListSetLib and variants
@@ -63,10 +55,6 @@ The common types and constants used by these libraries are defined in `Constants
 #### ModuleEntityLib
 
 `ModuleEntityLib` provides helpful conversions and utility functions for using `ModuleEntity`, a user-defined value type intended to hold a module address and an entity ID.
-
-### Interfaces
-
-Interfaces defined and depended on by ERC-6900 are available in the `src/interfaces` folder.
 
 ## Building and Testing
 
