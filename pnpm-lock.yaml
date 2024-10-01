@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@erc6900/reference-implementation':
-        specifier: github:erc6900/reference-implementation#v0.8.0-rc.1
-        version: https://codeload.github.com/erc6900/reference-implementation/tar.gz/1038b57677ef8fab6e6c752e12b7f2ea97224cf8
+        specifier: github:erc6900/reference-implementation#v0.8.0-rc.3
+        version: https://codeload.github.com/erc6900/reference-implementation/tar.gz/188bc4d8319714913738cda547facd0ccb732ead
       '@openzeppelin/contracts':
         specifier: ^5.0.2
         version: 5.0.2
@@ -38,9 +38,9 @@ packages:
     resolution: {integrity: sha512-EStJpq4OuY8xYfhGVXngigBJRWxftKX9ksiGDnmlY3o7B/V7KIAc9X4oiK87uPJSc/vs5L869bem5fhZa8caZw==}
     engines: {node: '>=6.9.0'}
 
-  '@erc6900/reference-implementation@https://codeload.github.com/erc6900/reference-implementation/tar.gz/1038b57677ef8fab6e6c752e12b7f2ea97224cf8':
-    resolution: {tarball: https://codeload.github.com/erc6900/reference-implementation/tar.gz/1038b57677ef8fab6e6c752e12b7f2ea97224cf8}
-    version: 0.8.0-rc.1
+  '@erc6900/reference-implementation@https://codeload.github.com/erc6900/reference-implementation/tar.gz/188bc4d8319714913738cda547facd0ccb732ead':
+    resolution: {tarball: https://codeload.github.com/erc6900/reference-implementation/tar.gz/188bc4d8319714913738cda547facd0ccb732ead}
+    version: 0.8.0-rc.3
 
   '@openzeppelin/contracts@5.0.2':
     resolution: {integrity: sha512-ytPc6eLGcHHnapAZ9S+5qsdomhjo6QBHTDRRBFfTxXIpsicMhVPouPgmUPebZZZGX7vt9USA+Z+0M0dSVtSUEA==}
@@ -462,7 +462,7 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.1.0
 
-  '@erc6900/reference-implementation@https://codeload.github.com/erc6900/reference-implementation/tar.gz/1038b57677ef8fab6e6c752e12b7f2ea97224cf8': {}
+  '@erc6900/reference-implementation@https://codeload.github.com/erc6900/reference-implementation/tar.gz/188bc4d8319714913738cda547facd0ccb732ead': {}
 
   '@openzeppelin/contracts@5.0.2': {}
 
