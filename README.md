@@ -7,7 +7,7 @@ A set of libraries to help build modular smart contract accounts and modules.
 ### As a Git Submodule in Foundry
 
 ```
-forge install erc6900/modular-account-libs@v0.7.0
+forge install erc6900/modular-account-libs@v0.8.0-rc.2
 ```
 
 Recommended remappings setup:
@@ -19,7 +19,7 @@ modular-account-libs/=lib/modular-account-libs/src/
 ### As an NPM package
 
 ```
-pnpm add github:erc6900/modular-account-libs#v0.7.0
+pnpm add github:erc6900/modular-account-libs#v0.8.0-rc.2
 ```
 
 Any package manager with NPM support can handle this installation, including `npm`,`yarn`,`pnpm`, and `bun`.
@@ -48,14 +48,6 @@ Additionally, entries also support “flags”. These can be thought of as addit
 
 The common types and constants used by these libraries are defined in `Constants.sol`.
 
-#### ModuleStorageLib
-
-`ModuleStorageLib` is a low-level library that provides utilities for getting storage slots in address-associated storage using varying amounts of input data as a key.
-
-#### ModuleEntityLib
-
-`ModuleEntityLib` provides helpful conversions and utility functions for using `ModuleEntity`, a user-defined value type intended to hold a module address and an entity ID.
-
 ## Building and Testing
 
 To build and test the `modular-account-libs` repo, use the following commands.
@@ -76,5 +68,3 @@ FOUNDRY_PROFILE=lite forge test -vvv
 ## Acknowledgements
 
 The libraries and stub contracts were originally developed in [alchemyplatform/modular-account](https://github.com/alchemyplatform/modular-account/tree/v1.0.1), and are contributed to the ERC-6900 community here. The original library versions, and audits covering the original library versions, can be found in the linked repository.
-
-ERC-4337 and ERC-6900 interfaces are released into the public domain via CC0 1.0 Universal as part of the ERC submission process, and made available here.
