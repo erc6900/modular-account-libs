@@ -221,4 +221,39 @@ contract AssociatedLinkedListSetLibTest is Test {
         assertFalse(_set1.tryRemoveKnown(_associated, value2, bytes32(SetValue.unwrap(value2))));
         assertTrue(_set1.contains(_associated, value2));
     }
+
+    function test_remove_then_add() public {
+        SetValue value1 = _getListValue(1);
+        SetValue value2 = _getListValue(2);
+        SetValue value3 = _getListValue(3);
+
+        // Add: 1, 2
+        // Result: 2, 1
+        assertTrue(_set1.tryAdd(_associated, value1));
+        assertTrue(_set1.tryAdd(_associated, value2));
+        SetValue[] memory values = _set1.getAll(_associated);
+        assertEq(values.length, 2);
+        assertEq(SetValue.unwrap(values[0]), SetValue.unwrap(value2));
+        assertEq(SetValue.unwrap(values[1]), SetValue.unwrap(value1));
+
+        // Remove: 1
+        // Add: 3
+        // Result: 3, 2
+        assertTrue(_set1.tryRemove(_associated, value1));
+        assertTrue(_set1.tryAdd(_associated, value3));
+        values = _set1.getAll(_associated);
+        assertEq(values.length, 2);
+        assertEq(SetValue.unwrap(values[0]), SetValue.unwrap(value3));
+        assertEq(SetValue.unwrap(values[1]), SetValue.unwrap(value2));
+
+        // Remove: 3
+        // Add: 1
+        // Result: 1, 2
+        assertTrue(_set1.tryRemove(_associated, value3));
+        assertTrue(_set1.tryAdd(_associated, value1));
+        values = _set1.getAll(_associated);
+        assertEq(values.length, 2);
+        assertEq(SetValue.unwrap(values[0]), SetValue.unwrap(value1));
+        assertEq(SetValue.unwrap(values[1]), SetValue.unwrap(value2));
+    }
 }
